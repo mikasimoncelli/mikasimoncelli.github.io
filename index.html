@@ -1,1 +1,276 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mika Simoncelli - Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+    }
+    header {
+      text-align: center;
+      padding: 1rem;
+      background: #6c63ff;
+      color: white;
+    }
+    main {
+      flex-grow: 1;
+      padding: 1rem 2rem;
+      margin-left: 200px; /* Reserve space for the sidebar */
+    }
+    section {
+      margin-bottom: 0;
+      padding: 3rem 0; /* Add padding to top and bottom of sections */
+      min-height: 30vh; /* Use min-height to avoid overflow */
+      box-sizing: border-box; /* Ensure padding doesn't affect the height */
+    }
+    h2 {
+      border-bottom: 2px solid #6c63ff;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem; /* Increased bottom margin for better section separation */
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 100vh;
+      background: #333;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 1rem;
+    }
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      margin: 1rem 0;
+      font-weight: bold;
+      padding: 10px;
+    }
+    .sidebar a:hover {
+      color: #6c63ff;
+    }
+    .sidebar .headphone-img {
+      margin-top: 20px;
+      width: 120px;
+      height: 120px;
+      background-image: url('headphone-image.jpg'); /* Replace with your headphone image URL */
+      background-size: cover;
+      border-radius: 50%;
+    }
+
+    /* Active Link Styles */
+    .sidebar .active {
+      background-color: #6c63ff; /* Purple background */
+      color: white; /* White text */
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .sidebar .active:hover {
+      background-color: #403ab3; /* Purple background */
+      color: white; /* White text */
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    /* Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Contact Section Styling */
+    #contact {
+      min-height: 100vh; /* Set contact section to be the same height */
+      padding-top: 5rem; /* Add more top padding to separate it */
+    }
+
+    /* Skills Section Styling */
+    #skills {
+      font-size: 1.2rem; /* Increase font size for better visibility */
+    }
+
+    /* Education Section Styling */
+    #education {
+      font-size: 1.2rem; /* Increase font size for visibility */
+      margin-bottom: 5rem; /* Added margin-bottom to create more space */
+    }
+
+    /* About Me Image Styling */
+    #about img {
+      margin-top: 2rem;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px; /* Optional rounded corners */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
+    }
+
+
+
+.center {
+  max-width: 300px;
+  display: block;
+  margin: 20px auto; /* Center the image with auto margins */
+}
+
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <h2>Navigation</h2>
+    <a href="#about" class="sidebar-link">About Me</a>
+    <a href="#skills" class="sidebar-link">Skills</a>
+    <a href="#projects" class="sidebar-link">Projects</a>
+    <a href="#education" class="sidebar-link">Education</a>
+    <a href="#contact" class="sidebar-link">Contact</a>
+    <div class="headphone-img"></div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <header>
+      <h1>Mika Simoncelli</h1>
+      <p>First-Class Computer Science Graduate | Junior Developer</p>
+      <p>Bristol, United Kingdom | mikasimoncelli@hotmail.co.uk | +44 7501 148335</p>
+    </header>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I recently graduated with First-Class Honours in Computer Science from the University of the West of England, Bristol. 
+        My expertise spans Python, C#, backend Unix systems, APIs, and TCP/IP. Currently, I work as a Junior Developer at SmithCorp, 
+        where I contribute to modern, tech-driven solutions. I am passionate about learning, growth, and working with forward-thinking 
+        organizations that embrace DevOps and collaboration.
+      </p>
+      <p>
+        In addition to my technical background, my experience in retail, hospitality, and government roles has helped me develop 
+        a strong work ethic, attention to detail, and the ability to build meaningful relationships with colleagues.
+      </p>
+      
+      <!-- Image added below the About Me text -->
+      <img class="center" style="max-width: 300px;" src="Mika-034-white-bw.jpg" alt="Mika Simoncelli" />
+    </section>
+
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <ul>
+        <li><strong>Development:</strong> C#, Python, C++, Kotlin</li>
+        <li><strong>Systems:</strong> Web Servers, Databases</li>
+        <li><strong>Tooling:</strong> Git, Linux, Copilot, Scripting, Docker</li>
+        <li><strong>Platforms:</strong> APIs, LLMs, Cloud Providers</li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2>My Projects</h2>
+
+      <div class="project">
+        <h3>SousChef - Cooking Tutor Android App</h3>
+        <p>
+          Android app developed in Kotlin featuring recipe suggestions, inventory management, and a shopping list. 
+          It enhances the cooking experience with personalized assistance and efficient kitchen management.
+        </p>
+        <a href="#">View Project on GitHub</a>
+      </div>
+
+      <div class="project">
+        <h3>Wildlife Web - AI Image Recognition</h3>
+        <p>
+          A Python Flask web app integrating AI services for real-time animal species recognition. Includes gamification 
+          and a world map for species sightings, offering an educational and engaging user experience.
+        </p>
+        <a href="#">View Project on GitHub</a>
+      </div>
+
+      <div class="project">
+        <h3>Asset Management System</h3>
+        <p>
+          Developed a C# MVC system for SmithCorp to replace spreadsheet-based asset tracking. Improved data accessibility 
+          and efficiency in managing assets, loans, and disposals within the company intranet.
+        </p>
+        <a href="#">View Project on GitHub</a>
+      </div>
+
+      <div class="project">
+        <h3>Healthcare Management System</h3>
+        <p>
+          Comprehensive Python-based system for managing appointments, prescriptions, and staff schedules. 
+          Utilized Docker and PostgreSQL to streamline deployment and enhance healthcare workflows.
+        </p>
+        <a href="#">View Project on GitHub</a>
+      </div>
+
+      <div class="project">
+        <h3>Job Application Portal</h3>
+        <p>
+          Online portal built with Python and MySQL, allowing applicants to submit and track job applications. 
+          Streamlined communication and improved the job application process for users.
+        </p>
+        <a href="#">View Project on GitHub</a>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <p>
+        I graduated with First-Class Honours in Computer Science from the University of the West of England, Bristol, 
+        where I gained a solid understanding of software development, systems programming, and computing theory. My time at UWE 
+        helped me hone my skills in a variety of programming languages and technologies, as well as explore areas like cloud computing 
+        and DevOps practices.
+      </p>
+      <ul>
+        <li><strong>BSc Computer Science:</strong> First-Class Honours, University of the West of England, Bristol (2021-2024)</li>
+        <li><strong>A-Levels:</strong> Computer Science (A), Physics (B), Music Technology (B), Hautlieu School, Jersey (2018-2020)</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <p>
+        Feel free to reach out to me for any inquiries, collaboration opportunities, or to simply connect! 
+        You can contact me through the following methods:
+      </p>
+      <p>Email: <a href="mailto:mikasimoncelli@hotmail.co.uk">mikasimoncelli@hotmail.co.uk</a></p>
+      <p>Phone: <a href="tel:+447501148335">+44 7501 148335</a></p>
+      <p>Location: Bristol, United Kingdom</p>
+    </section>
+  </main>
+
+  <script>
+    // JavaScript for updating the sidebar as the user scrolls
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section');
+    
+    window.addEventListener('scroll', () => {
+      let currentSection = "";
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        // Adjusted logic to make Skills and Education highlighted longer
+        const extendedThreshold = sectionHeight / 3; // Increase the threshold to make the sections active for longer
+        if (pageYOffset >= sectionTop - extendedThreshold && pageYOffset < sectionTop + sectionHeight - extendedThreshold) {
+          currentSection = section.getAttribute("id");
+        }
+      });
+
+      links.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${currentSection}`) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
