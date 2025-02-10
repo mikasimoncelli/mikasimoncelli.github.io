@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mika Simoncelli - Home</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills - Mika Simoncelli</title>
 
   <style>
     /* RESET */
@@ -15,13 +15,11 @@
     html, body {
       height: 100%;
     }
-
-    /* BODY */
     body {
       font-family: Arial, sans-serif;
       background: #000;
       color: #fff;
-      overflow-x: hidden; 
+      overflow-x: hidden;
     }
 
     /* GALAXY BACKGROUND  */
@@ -36,7 +34,7 @@
       z-index: -3;
     }
 
-    /* STAR FIELD ANIMATIONS */
+    /* STAR FIELD */
     @keyframes sf-fly-by-1 {
       from { transform: translateZ(-600px); opacity: 0.5; }
       to   { transform: translateZ(0);       opacity: 0.5; }
@@ -52,13 +50,10 @@
 
     .star-field {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       perspective: 600px;
-      -webkit-perspective: 600px;
-      z-index: -1; 
+      z-index: -1;
     }
     .star-field .layer {
       position: absolute;
@@ -131,28 +126,25 @@
       animation: sf-fly-by-3 5s linear infinite;
     }
 
-    /* CENTERED CONTAINER FOR LANDING */
-    .content {
+    /* CONTENT */
+    .container {
       position: relative;
       z-index: 999;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh; /* Full viewport */
       text-align: center;
-      padding: 0 1rem;
+      padding: 2rem;
     }
     h1 {
       font-size: 2rem;
       margin-bottom: 1.5rem;
     }
-    /* TYPING TEXT */
-    #typing {
-      font-size: 3rem;
-      font-weight: bold;
-      letter-spacing: 2px;
-      min-height: 50px; 
+    p {
+      max-width: 800px;
+      line-height: 1.6;
       margin-bottom: 2rem;
     }
 
@@ -162,14 +154,10 @@
       display: flex;
       gap: 1.5rem;
     }
-    nav li {
-      display: inline-block;
-    }
     nav a {
       color: #fff;
       text-decoration: none;
       font-size: 1.2rem;
-      transition: 0.3s;
     }
     nav a:hover {
       text-decoration: underline;
@@ -177,53 +165,31 @@
   </style>
 </head>
 <body>
-  <!-- Galaxy Background -->
   <div class="bg"></div>
-
-  <!-- Star Field -->
   <div class="star-field">
     <div class="layer"></div>
     <div class="layer"></div>
     <div class="layer"></div>
   </div>
 
-  <div class="content">
-    <h1>Hi! My name is:</h1>
-    <div id="typing"></div>
+  <div class="container">
+    <h1>Skills</h1>
+    <p>
+      <strong>Development:</strong> C#, Python, C++, Kotlin <br/>
+      <strong>Systems:</strong> Web Servers, Databases <br/>
+      <strong>Tools:</strong> Git, Linux, Docker, Copilot <br/>
+      <strong>Platforms:</strong> APIs, LLMs, Cloud Providers
+    </p>
+
     <nav>
       <ul>
+        <li><a href="index.html">Home</a></li>
         <li><a href="experience.html">Experience</a></li>
         <li><a href="education.html">Education</a></li>
         <li><a href="projects.html">Projects</a></li>
-        <li><a href="skills.html">Skills</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </div>
-
-  <!-- Typing Script -->
-  <script>
-    const text = "Mika Simoncelli";
-    let index = 0;
-    const typingElement = document.getElementById("typing");
-
-    function typeWriter() {
-      if (index < text.length) {
-        typingElement.innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeWriter, 150); // typing speed
-      } else {
-        // Once finished, pause for 2 seconds, then reset
-        setTimeout(() => {
-          typingElement.innerHTML = "";
-          index = 0;
-          typeWriter();
-        }, 2000);
-      }
-    }
-
-    // Start typing on page load
-    typeWriter();
-  </script>
 </body>
 </html>

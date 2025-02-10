@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mika Simoncelli - Home</title>
-
+  <title>Projects - Mika Simoncelli</title>
   <style>
     /* RESET */
     * {
@@ -15,16 +14,14 @@
     html, body {
       height: 100%;
     }
-
-    /* BODY */
     body {
       font-family: Arial, sans-serif;
       background: #000;
       color: #fff;
-      overflow-x: hidden; 
+      overflow-x: hidden;
     }
 
-    /* GALAXY BACKGROUND  */
+    /* Galaxy Background */
     .bg {
       background: url("https://i.ibb.co/87GbbFP/2799006.jpg") no-repeat center center;
       background-size: cover;
@@ -36,7 +33,7 @@
       z-index: -3;
     }
 
-    /* STAR FIELD ANIMATIONS */
+    /* Star Field */
     @keyframes sf-fly-by-1 {
       from { transform: translateZ(-600px); opacity: 0.5; }
       to   { transform: translateZ(0);       opacity: 0.5; }
@@ -52,13 +49,10 @@
 
     .star-field {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       perspective: 600px;
-      -webkit-perspective: 600px;
-      z-index: -1; 
+      z-index: -1;
     }
     .star-field .layer {
       position: absolute;
@@ -131,29 +125,44 @@
       animation: sf-fly-by-3 5s linear infinite;
     }
 
-    /* CENTERED CONTAINER FOR LANDING */
-    .content {
+    /* CONTENT */
+    .container {
       position: relative;
       z-index: 999;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh; /* Full viewport */
       text-align: center;
-      padding: 0 1rem;
+      padding: 2rem;
     }
     h1 {
       font-size: 2rem;
       margin-bottom: 1.5rem;
     }
-    /* TYPING TEXT */
-    #typing {
-      font-size: 3rem;
-      font-weight: bold;
-      letter-spacing: 2px;
-      min-height: 50px; 
+
+    /* Projects */
+    .project {
+      width: 100%;
+      max-width: 600px; /* Ensures uniform width */
       margin-bottom: 2rem;
+      text-align: left;
+    }
+    .project h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .project p {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+    .project a {
+      color: #fff;
+      text-decoration: underline;
+    }
+    .project a:hover {
+      color: #ccc;
     }
 
     /* NAV MENU */
@@ -161,15 +170,12 @@
       list-style: none;
       display: flex;
       gap: 1.5rem;
-    }
-    nav li {
-      display: inline-block;
+      margin-top: 2rem;
     }
     nav a {
       color: #fff;
       text-decoration: none;
       font-size: 1.2rem;
-      transition: 0.3s;
     }
     nav a:hover {
       text-decoration: underline;
@@ -177,53 +183,86 @@
   </style>
 </head>
 <body>
-  <!-- Galaxy Background -->
   <div class="bg"></div>
 
-  <!-- Star Field -->
   <div class="star-field">
     <div class="layer"></div>
     <div class="layer"></div>
     <div class="layer"></div>
   </div>
 
-  <div class="content">
-    <h1>Hi! My name is:</h1>
-    <div id="typing"></div>
+  <div class="container">
+    <h1>My Projects</h1>
+
+    <div class="project">
+      <h3>SousChef - Cooking Tutor Android App</h3>
+      <p>
+        Kotlin-based Android app that provides recipe suggestions, helps manage inventory, and 
+        generates shopping lists to improve the cooking experience.
+      </p>
+      <a href="https://github.com/mikasimoncelli/SousChef" target="_blank">View on GitHub</a>
+    </div>
+
+    <div class="project">
+      <h3>Wildlife Web - AI Image Recognition</h3>
+      <p>
+        A Python Flask web app integrating AI services for real-time animal species recognition. 
+        Includes a map for logging sightings worldwide.
+      </p>
+      <a href="https://github.com/mikasimoncelli/WildlifeWeb" target="_blank">View on GitHub</a>
+    </div>
+    
+    <div class="project">
+      <h3>Railway Temperature Dashboard</h3>
+      <p>
+        React webapp to display data from a large dataset of temperatures recorded along a railway. CSV data is displayed interactively on a map, allowing users to sort, filter, and search.
+      </p>
+      <a href="https://github.com/mikasimoncelli/Railway-Temperature-Dashboard" target="_blank">View on GitHub</a>
+    </div>
+      
+    <div class="project">
+      <h3>Asset Management System</h3>
+      <p>
+        C# MVC application developed to streamline asset tracking, 
+        data accessibility, and loan management.
+      </p>
+      <a href="https://github.com/mikasimoncelli/AssetManagment" target="_blank">View on GitHub</a>
+    </div>
+
+    <div class="project">
+      <h3>Detect Thermal Hotpots</h3>
+      <p>
+        Python program that detects thermal hotpots from a video captured by a thermal imaging camera. It uses a binary mask to identify colors of interest, searches for consistent contours, and outputs a new video highlighting these hotpots with a surrounding box.
+      </p>
+      <a href="https://github.com/mikasimoncelli/Thermal-Hotspot-Detection" target="_blank">View on GitHub</a>
+    </div>
+      
+    <div class="project">
+      <h3>Healthcare Management System</h3>
+      <p>
+        A Dockerized Python-based system for managing appointments, prescriptions, 
+        and staff schedules, integrated with PostgreSQL.
+      </p>
+    </div>
+
+    <div class="project">
+      <h3>Job Application Portal</h3>
+      <p>
+        Python & MySQL platform allowing users to submit and track job applications, 
+        streamlining the hiring workflow.
+      </p>
+    </div>
+
+    <!-- NAV -->
     <nav>
       <ul>
+        <li><a href="index.html">Home</a></li>
         <li><a href="experience.html">Experience</a></li>
         <li><a href="education.html">Education</a></li>
-        <li><a href="projects.html">Projects</a></li>
         <li><a href="skills.html">Skills</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </div>
-
-  <!-- Typing Script -->
-  <script>
-    const text = "Mika Simoncelli";
-    let index = 0;
-    const typingElement = document.getElementById("typing");
-
-    function typeWriter() {
-      if (index < text.length) {
-        typingElement.innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeWriter, 150); // typing speed
-      } else {
-        // Once finished, pause for 2 seconds, then reset
-        setTimeout(() => {
-          typingElement.innerHTML = "";
-          index = 0;
-          typeWriter();
-        }, 2000);
-      }
-    }
-
-    // Start typing on page load
-    typeWriter();
-  </script>
 </body>
 </html>
