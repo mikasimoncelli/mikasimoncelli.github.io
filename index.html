@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mika Simoncelli - Home</title>
-
   <style>
     /* RESET */
     * {
@@ -143,17 +142,18 @@
       text-align: center;
       padding: 0 1rem;
     }
-    h1 {
+    /* Text elements with fixed minimum heights so the nav doesn't shift */
+    #t1 {
       font-size: 2rem;
       margin-bottom: 1.5rem;
+      min-height: 2.5rem;
     }
-    /* TYPING TEXT */
-    #typing {
+    #t2 {
       font-size: 3rem;
       font-weight: bold;
       letter-spacing: 2px;
-      min-height: 50px; 
       margin-bottom: 2rem;
+      min-height: 3rem;
     }
 
     /* NAV MENU */
@@ -174,6 +174,53 @@
     nav a:hover {
       text-decoration: underline;
     }
+
+/* Responsive adjustments for viewports below 1085px x 598px */
+@media screen and (max-width: 1085px) and (max-height: 598px) {
+  /* Zoom in on the background image (set to 150% for in-between devices) */
+  .bg {
+    background-size: 150%;
+  }
+  /* Reduce text sizes by about 30% */
+  #t1 {
+    font-size: 1.4rem;
+    margin-bottom: 1.05rem;
+    /* Adjust the reserved height if needed */
+    min-height: 2.5rem;
+  }
+  #t2 {
+    font-size: 2.1rem;
+    margin-bottom: 1.4rem;
+    min-height: 3rem;
+    letter-spacing: 1.4px;
+  }
+  nav a {
+    font-size: 0.84rem;
+  }
+}
+
+/* Responsive adjustments for very small viewports (width below 400px) */
+@media screen and (max-width: 400px) {
+  /* Further zoom in on the background image (set to 300% for very small devices) */
+  .bg {
+    background-size: 320%;
+  }
+  /* Optionally, you can keep the text sizes the same as above or reduce them further */
+  #t1 {
+    font-size: 1.2rem;
+    margin-bottom: 1.05rem;
+    min-height: 2.5rem;
+  }
+  #t2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.4rem;
+    min-height: 3rem;
+    letter-spacing: 1.4px;
+  }
+  nav a {
+    font-size: 0.5rem;
+}
+}
   </style>
 </head>
 <body>
@@ -188,8 +235,9 @@
   </div>
 
   <div class="content">
-    <h1>Hi! My name is:</h1>
-    <div id="typing"></div>
+    <!-- Text elements (start empty) -->
+    <h1 id="t1"></h1>
+    <div id="t2"></div>
     <nav>
       <ul>
         <li><a href="experience.html">Experience</a></li>
@@ -203,27 +251,94 @@
 
   <!-- Typing Script -->
   <script>
-    const text = "Mika Simoncelli";
-    let index = 0;
-    const typingElement = document.getElementById("typing");
+    // Timing configuration (in milliseconds)
+    const typeSpeedHi      = 150; // for "Hi!"
+    const typeSpeedAppend  = 75;  // for appended texts and welcome message
+    const pauseAfterHi     = 500;
+    const pauseAfterMsg1   = 1000;
+    const pauseAfterMsg2   = 1000;
+    const untypeSpeed      = 75;  // speed for deleting characters
 
-    function typeWriter() {
-      if (index < text.length) {
-        typingElement.innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeWriter, 150); // typing speed
-      } else {
-        // Once finished, pause for 2 seconds, then reset
-        setTimeout(() => {
-          typingElement.innerHTML = "";
-          index = 0;
-          typeWriter();
-        }, 2000);
+    // Text parts
+    const part1    = "Hi!";
+    const part2    = " My name is:";
+    const part3    = " Mika Simoncelli";
+    const welcome  = "Welcome to my portfolio!";
+
+    // Get references to the text elements
+    const t1 = document.getElementById('t1');
+    const t2 = document.getElementById('t2');
+
+    // Function to type text (appending to any existing text)
+    function typeText(element, text, speed, callback) {
+      let i = 0;
+      function type() {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(type, speed);
+        } else if (callback) {
+          callback();
+        }
       }
+      type();
     }
 
-    // Start typing on page load
-    typeWriter();
+    // Function to delete all text from an element one character at a time
+    function deleteText(element, speed, callback) {
+      function del() {
+        if (element.innerHTML.length > 0) {
+          element.innerHTML = element.innerHTML.slice(0, -1);
+          setTimeout(del, speed);
+        } else if (callback) {
+          callback();
+        }
+      }
+      del();
+    }
+
+    // The complete animation sequence
+    function sequence() {
+      // Clear both text elements
+      t1.innerHTML = "";
+      t2.innerHTML = "";
+
+      // --- Message 1: "Hi! My name is: Mika Simoncelli" ---
+      // Step 1: t1 types "Hi!" at 150ms per character
+      typeText(t1, part1, typeSpeedHi, function() {
+        setTimeout(function() {
+          // Step 2: t1 appends " My name is:" at 75ms per character
+          typeText(t1, part2, typeSpeedAppend, function() {
+            // Step 3: t2 types " Mika Simoncelli" at 75ms per character
+            typeText(t2, part3, typeSpeedAppend, function() {
+              setTimeout(function() {
+                // Step 4: Clear Message 1:
+                // First, t2 untypes fully
+                deleteText(t2, untypeSpeed, function() {
+                  // Then, t1 untypes fully (removing the entire message including "Hi!")
+                  deleteText(t1, untypeSpeed, function() {
+                    // --- Message 2: "Welcome to my portfolio!" ---
+                    // Step 5: t2 types the welcome message at 75ms per character
+                    typeText(t2, welcome, typeSpeedAppend, function() {
+                      setTimeout(function() {
+                        // Step 6: t2 untypes the welcome message
+                        deleteText(t2, untypeSpeed, function() {
+                          // Restart the sequence
+                          sequence();
+                        });
+                      }, pauseAfterMsg2);
+                    });
+                  });
+                });
+              }, pauseAfterMsg1);
+            });
+          });
+        }, pauseAfterHi);
+      });
+    }
+
+    // Start the sequence once the page loads
+    window.onload = sequence;
   </script>
 </body>
 </html>
