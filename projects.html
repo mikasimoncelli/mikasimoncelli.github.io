@@ -180,6 +180,53 @@
     nav a:hover {
       text-decoration: underline;
     }
+
+    /* Responsive adjustments for viewports below 1085px x 598px */
+@media screen and (max-width: 1085px) and (max-height: 598px) {
+  /* Zoom in on the background image (set to 150% for in-between devices) */
+  .bg {
+    background-size: 150%;
+  }
+  /* Reduce text sizes by about 30% */
+  #t1 {
+    font-size: 1.4rem;
+    margin-bottom: 1.05rem;
+    /* Adjust the reserved height if needed */
+    min-height: 2.5rem;
+  }
+  #t2 {
+    font-size: 2.1rem;
+    margin-bottom: 1.4rem;
+    min-height: 3rem;
+    letter-spacing: 1.4px;
+  }
+  nav a {
+    font-size: 0.84rem;
+  }
+}
+
+/* Responsive adjustments for very small viewports (width below 400px) */
+@media screen and (max-width: 400px) {
+  /* Further zoom in on the background image (set to 300% for very small devices) */
+  .bg {
+    background-size: 320%;
+  }
+  /* Optionally, you can keep the text sizes the same as above or reduce them further */
+  #t1 {
+    font-size: 1.2rem;
+    margin-bottom: 1.05rem;
+    min-height: 2.5rem;
+  }
+  #t2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.4rem;
+    min-height: 3rem;
+    letter-spacing: 1.4px;
+  }
+  nav a {
+    font-size: 0.6rem;
+  }
+}
   </style>
 </head>
 <body>
